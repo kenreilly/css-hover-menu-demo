@@ -1,0 +1,149 @@
+:root {
+	--nav-size: 12vh;
+	--nav-height-open: 40vh;
+	--nav-width-full: 60vw;
+	--bg-menu: #203040;
+	--bg-hover: #405060;
+}
+
+@keyframes item-fade-in {
+	0% { opacity: 0; }
+	100% { flex: 1; opacity: 1; }
+}
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+	background: #202020;
+	margin: 0;
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-start;
+	justify-content: space-evenly;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav {
+	width: var(--nav-size);
+	height: var(--nav-size);
+	margin-top: 15%;
+	background-color: var(--bg-menu);
+	border-radius: 6px;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: stretch;
+	transition: 120ms height linear, 120ms width linear, 120ms background-color linear;
+}
+
+nav > header {
+	height: var(--nav-size);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 180ms font-size linear;
+	cursor: default;
+}
+
+nav > header > b { font-size: 2em; }
+
+nav:hover { 
+	background-color: var(--bg-hover);
+	transition: 120ms background-color linear;
+}
+
+nav:nth-child(1):hover, nav:nth-child(2):hover {
+	height: var(--nav-height-open);
+	transition: 120ms background-color linear, 240ms height linear;
+}
+
+nav:hover > header { 
+	transition: 180ms font-size linear;
+	font-size: 1.2em;
+}
+
+nav > div { 
+	height: 0;
+	opacity: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 240ms background-color linear;
+	font-size: 1.2em;
+	cursor: default;
+}
+
+nav:hover > div {
+	animation: 240ms item-fade-in linear forwards;
+	animation-delay: 120ms;
+	transition: 120ms background-color linear;
+}
+
+nav:nth-child(1):hover > div:hover, nav:nth-child(2):hover > div:hover {
+	background-color: var(--bg-menu);
+	transition: 120ms background-color linear;
+}
+
+nav:nth-child(2) > div { justify-content: start; }
+
+nav:nth-child(2) > div > header {
+	width: var(--nav-size);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+nav:nth-child(2) > div > div {
+	width: 0;
+	opacity: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+nav:nth-child(2):hover > div:hover > div {
+	animation: 320ms item-fade-in linear forwards;
+}
+
+nav:nth-child(2):hover > div:hover {
+	width: 400%;
+	background-color: var(--bg-menu);
+	display: flex;
+	align-items: stretch;
+}
+
+nav:nth-child(2):hover > div:hover > div:hover { background-color: #102030; }
+
+nav:nth-child(3):hover { background-color: transparent; }
+
+nav:nth-child(3):hover > div {
+	position: fixed;
+	height: var(--nav-size);
+	width: var(--nav-size);
+}
+
+nav:nth-child(3):hover > div > span { 
+	transform: translateX(var(--nav-size));
+	height: var(--nav-size);
+	width: var(--nav-size);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+nav:nth-child(3):hover > div > span {
+	font-size: 3.0em;
+	transition: 120ms font-size linear;
+	cursor: default;
+}
+
+nav:nth-child(3) > div:nth-of-type(2) { transform: rotate(90deg); }
+nav:nth-child(3) > div:nth-of-type(3) { transform: rotate(180deg); }
+nav:nth-child(3) > div:nth-of-type(4) { transform: rotate(270deg); }
+
+
+nav:nth-child(3) > div:nth-of-type(1) > span { transform: translateX(var(--nav-size)) rotate(0deg); }
+nav:nth-child(3) > div:nth-of-type(2) > span { transform: translateX(var(--nav-size)) rotate(270deg); }
+nav:nth-child(3) > div:nth-of-type(3) > span { transform: translateX(var(--nav-size)) rotate(180deg); }
+nav:nth-child(3) > div:nth-of-type(4) > span { transform: translateX(var(--nav-size)) rotate(90deg); }
+
+nav:nth-child(3) > div > span:hover { font-size: 3.8em; transition: 120ms font-size linear; }
